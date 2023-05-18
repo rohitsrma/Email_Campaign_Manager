@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import JsonResponse
-from .models import Subscribe, UnsubscribedUser
-
+from .models import Subscribe, UnsubscribedUser, Campaign
+from .utils import send_campaign
+from django.core.mail import send_mail
 
 def subscribe(request):
     if request.method == 'POST':
@@ -25,9 +26,9 @@ def unsubscribe(request):
         try:
             subscriber = Subscribe.objects.get(email=email)
             unsubscribed_user, created = UnsubscribedUser.objects.get_or_create(subscriber=subscriber)
-            subscriber.is_active = False  # Mark the associated Subscribe object as inactive
+            subscriber.is_active = False 
             subscriber.save()
-            unsubscribed_user.is_active = True  # Mark the UnsubscribedUser as active (optional)
+            unsubscribed_user.is_active = True 
             unsubscribed_user.save()
 
             return JsonResponse({'message': 'User unsubscribed successfully.'})
@@ -35,3 +36,8 @@ def unsubscribe(request):
             return JsonResponse({'message': 'Subscriber not found.'})
     else:
         return render(request, 'unsubscribe.html')
+    
+def send_email(request):
+    campaign = Campaign.objects.get(pk=2)
+    send_campaign(campaign)
+    return JsonResponse({'message': 'Email sent successfully!!'})

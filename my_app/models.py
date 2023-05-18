@@ -1,5 +1,4 @@
 from django.db import models
-
 # Create your models here.
 class Subscribe(models.Model):
     name = models.CharField(max_length=100)
@@ -17,9 +16,15 @@ class UnsubscribedUser(models.Model):
     def __str__(self):
         return str(self.subscriber)
     
-    def save(self, *args, **kwargs):
-        self.subscriber.is_active = False  # Mark the associated Subscribe object as inactive
-        self.subscriber.save()
-        super().save(*args, **kwargs)
 
+class Campaign(models.Model):
+    subject = models.CharField(max_length=255)
+    preview_text = models.TextField()
+    article_url = models.URLField()
+    html_content = models.TextField()
+    text_content = models.TextField()
+    date = models.DateField()
 
+    def __str__(self):
+        return self.subject
+    

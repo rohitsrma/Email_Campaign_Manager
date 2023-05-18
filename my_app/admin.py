@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Subscribe, UnsubscribedUser
+from .models import Subscribe, UnsubscribedUser, Campaign
 
 # Register your models here.
 
@@ -11,3 +11,5 @@ class UnsubscribedUserAdmin(admin.ModelAdmin):
 
 admin.site.register(Subscribe, SubscribeAdmin)
 admin.site.register(UnsubscribedUser, UnsubscribedUserAdmin)
+
+admin.site.register(Campaign)
