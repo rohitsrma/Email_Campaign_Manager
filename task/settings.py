@@ -123,10 +123,9 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.mailgun.org'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'postmaster@sandboxa1ad8bdf74a641339d07aa70595fdf4c.mailgun.org'
-EMAIL_HOST_PASSWORD = '24dc3f5c4069e173f5594faf3b80f450-db4df449-e4cd227b'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'admin@test.com'

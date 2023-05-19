@@ -1,9 +1,12 @@
+from collections.abc import Callable, Iterable, Mapping
+from typing import Any
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import JsonResponse
 from .models import Subscribe, UnsubscribedUser, Campaign
 from .utils import send_campaign
 from django.core.mail import send_mail
+from .thread import EmailThread
 
 def subscribe(request):
     if request.method == 'POST':
@@ -38,6 +41,6 @@ def unsubscribe(request):
         return render(request, 'unsubscribe.html')
     
 def send_email(request):
-    campaign = Campaign.objects.get(pk=2)
-    send_campaign(campaign)
+    campaign = Campaign.objects.get(pk=3)
+    EmailThread(send_campaign, campaign).start()
     return JsonResponse({'message': 'Email sent successfully!!'})
