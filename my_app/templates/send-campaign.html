@@ -8,7 +8,10 @@
     <h1>{{ subject }}</h1>
     <p>{{ preview_text }}</p>
     <p>Published Date: {{ published_date }}</p>
-    <p>Read the article <a href="{{ article_url }}">here</a>.</p>
+    
+    <!-- Display the HTML content from the campaign -->
+    {{ html_content | safe }}
 
+    <p>Read the article <a href="{{ article_url }}">here</a>.</p>
 </body>
 </html>

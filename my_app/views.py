@@ -41,6 +41,6 @@ def unsubscribe(request):
         return render(request, 'unsubscribe.html')
     
 def send_email(request):
-    campaign = Campaign.objects.get(pk=3)
+    campaign = Campaign.objects.get(pk=5)
     EmailThread(send_campaign, campaign).start()
     return JsonResponse({'message': 'Email sent successfully!!'})

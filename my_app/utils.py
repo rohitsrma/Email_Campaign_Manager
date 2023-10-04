@@ -19,6 +19,7 @@ def send_campaign(campaign):
         'preview_text': email_preview_text,
         'article_url': email_article_url,
         'published_date': email_date,
+        'html_content': email_html_content,
     })
 
     send_mail(

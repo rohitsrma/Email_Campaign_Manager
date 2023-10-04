@@ -8,5 +8,4 @@ urlpatterns = [
     path('unsubscribe/', views.unsubscribe, name='unsubscribe'),
     path('send-email/', send_email, name='send_email'),
 
-
 ]

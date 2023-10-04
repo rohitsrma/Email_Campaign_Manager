@@ -13,3 +13,4 @@ class EmailThread(threading.Thread):
         except Exception as e:
             # Handling the exception
             print(f"An error occurred: {str(e)}")
+            
